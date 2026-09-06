@@ -1,0 +1,29 @@
+{
+  "rules": [
+    {
+      "when": "complex technical design, product design, architecture decisions, or ambiguous open-ended investigation",
+      "use": { "harness": "claude", "model": "opus", "effort": "xhigh" }
+    },
+    {
+      "when": "normal implementation work with a known path: features, bug fixes, refactors, and tests",
+      "select": "quota-balanced",
+      "use": [
+        { "harness": "pi", "model": "github-copilot/gpt-5.3-codex", "effort": "high" },
+        { "harness": "pi", "model": "github-copilot/claude-sonnet-5", "effort": "high" },
+        { "harness": "claude", "model": "sonnet", "effort": "high" }
+      ]
+    },
+    {
+      "when": "mechanical bounded work: documentation, formatting, dependency bumps, and small chores",
+      "select": "quota-balanced",
+      "use": [
+        { "harness": "pi", "model": "github-copilot/claude-haiku-4.5", "effort": "low" },
+        { "harness": "pi", "model": "github-copilot/gemini-3.8-flash", "effort": "low" }
+      ]
+    }
+  ],
+  "default": [
+    { "harness": "pi", "model": "github-copilot/gpt-5.3-codex", "effort": "high" },
+    { "harness": "claude", "model": "sonnet", "effort": "high" }
+  ]
+}
